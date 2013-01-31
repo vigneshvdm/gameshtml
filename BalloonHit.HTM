@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Angry Birds</title>
+
+<script src="JS/jquery.min.js" type="text/javascript"></script>
+<script src="JS/jquery-ui.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var score=0;
+    $(document).ready(function () {
+        flystarter();
+        
+    });
+    function hitcheck() {
+        var topposition = Math.floor(Math.random() * (600 - 10 + 1)) + 10;
+        var leftposition = Math.floor(Math.random() * (1000 - 200 + 1)) + 200;
+        var needleposition = $("#Needle").position();
+        var Balloon1position = $("#Balloon1").position();
+        var Balloon2position = $("#Balloon2").position();
+        var Balloon3position = $("#Balloon3").position();
+        var Balloon4position = $("#Balloon4").position();
+        var Balloon5position = $("#Balloon5").position();
+        if ((Math.abs(needleposition.top - Balloon1position.top) < 50) && (Math.abs(needleposition.left - Balloon1position.left) < 50)) {
+            score += 10;
+            $("#Balloon1").hide();
+            setInterval(function () { $("#Balloon1").show();}, 3000);
+            $("#Balloon1").css("left", leftposition);
+            $("#Balloon1").css("top", topposition);
+            $("#Score").html("");
+            $("#Score").append("Score-->" + score);
+        }
+        if ((Math.abs(needleposition.top - Balloon2position.top) < 50) && (Math.abs(needleposition.left - Balloon2position.left) < 50)) {
+            score += 10;
+            $("#Balloon2").hide();
+            setInterval(function () { $("#Balloon2").show(); }, 3000);
+            $("#Score").html("");
+            $("#Score").append("Score-->" + score);
+        }
+        if ((Math.abs(needleposition.top - Balloon3position.top) < 50) && (Math.abs(needleposition.left - Balloon3position.left) < 50)) {
+            score += 10;
+            $("#Balloon3").hide();
+            setInterval(function () { $("#Balloon3").show(); }, 3000);
+            $("#Score").html("");
+            $("#Score").append("Score-->" + score);
+        }
+        if ((Math.abs(needleposition.top - Balloon4position.top) < 50) && (Math.abs(needleposition.left - Balloon4position.left) < 50)) {
+            score += 10;
+            $("#Balloon4").hide();
+            setInterval(function () { $("#Balloon4").show(); }, 3000);
+            $("#Score").html("");
+            $("#Score").append("Score-->" + score);
+        }
+        if ((Math.abs(needleposition.top - Balloon5position.top) < 50) && (Math.abs(needleposition.left - Balloon5position.left) < 50)) {
+            score += 10;
+            $("#Balloon5").hide();
+            setInterval(function () { $("#Balloon5").show(); }, 3000);
+            $("#Score").html("");
+            $("#Score").append("Score-->" + score);
+        }
+
+    };
+    $(document).mousemove(function (e) {
+
+        var mouseX = e.pageX; var mouseY = e.pageY; $("#Target").css("top", mouseY); $("#Target").css("left", mouseX);
+        if (mouseX > 500)
+        { jQuery("#Needle").attr("src", "Images/needler.png"); }
+        if (mouseX < 499)
+        { jQuery("#Needle").attr("src", "Images/needlel.png"); }
+       
+
+    });
+    $(document).click(function () {
+
+        var aimposition = $('#Target').position();
+        $("#Needle").animate({ top: aimposition.top, left: aimposition.left }, 500,hitcheck);
+        
+        var topp = 700;
+        var leftt = 600;
+        $("#Needle").animate({ top: topp, left: leftt }, 500);
+        $("#Needle").show(1000);
+    });
+    function flystarter() {
+
+        startballoon = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+        
+        balloonfly(startballoon);
+    }
+    function balloonfly(bno) {
+        var topposition = Math.floor(Math.random() * (600 - 10 + 1)) + 10;
+        var leftposition = Math.floor(Math.random() * (1000 - 200 + 1)) + 200;
+        switch (bno) {
+            case 1:
+                $("#Balloon1").animate({ left: leftposition, top: topposition }, 5000);
+                break;
+            case 2:
+                $("#Balloon2").animate({ left: leftposition, top: topposition }, 5000);
+                break;
+            case 3:
+                $("#Balloon3").animate({ left: leftposition, top: topposition }, 3000);
+                break;
+            case 4:
+                $("#Balloon4").animate({ left: leftposition, top: topposition }, 4000);
+                break;
+            case 5:
+                $("#Balloon5").animate({ left: leftposition, top: topposition }, 5000);
+                break;
+            default:
+                alert("");
+                break; 
+           
+        }
+        flystarter();
+        
+    }
+  
+</script>
+<link href="Styles/AngryBirds.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/jquery-ui.css" type="text/css" rel="Stylesheet" />
+</head>
+<body>
+<div id="Main">
+
+<div id="Bird" >
+<p id="Score">SCORE</p>
+</div>
+
+<div id="Pig">
+</div>
+<img id="Balloon1" src="Images/balloon1.png" alt="Balloon1"  />
+<img id="Balloon2" src="Images/balloon2.png" alt="Balloon2"  />
+<img id="Balloon3" src="Images/balloon3.png" alt="Balloon3"  />
+<img id="Balloon4" src="Images/balloon4.png" alt="Balloon4"  />
+<img id="Balloon5" src="Images/balloon5.png" alt="Balloon5"  />
+<img id="Target" src="Images/target.png" alt="Aimer"  />
+<img id="Needle" src="Images/needles.png" alt="Needle"  />
+</div>
+
+</body>
+</html>

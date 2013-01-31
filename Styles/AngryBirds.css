@@ -1,0 +1,40 @@
+*
+{
+background: white url[../Images/space.jpeg];
+}
+body
+{
+
+background: white url('../Images/forest2.jpg') no-repeat;
+
+}
+
+img
+{
+    width:100px;
+    height:100px;
+    position:absolute;
+    }
+#Main
+{
+width:1200px;
+height:800px;
+}
+      
+#Needle
+{
+    position:absolute;
+    top:1000px;
+    left:500px;
+    width:30px;
+    height:150px;
+}    
+#Score
+{
+    position:absolute;
+    border:2px dotted black;
+    background-color:Aqua;
+    width:100px;
+    top:300px;
+    left:300px;
+}
